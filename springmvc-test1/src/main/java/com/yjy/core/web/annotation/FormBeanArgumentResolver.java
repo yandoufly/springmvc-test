@@ -1,6 +1,7 @@
 package com.yjy.core.web.annotation;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.PropertyValues;
@@ -27,7 +28,7 @@ public class FormBeanArgumentResolver implements HandlerMethodArgumentResolver {
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		//例如：某方法定义为addUser(@FormBean("user") User user)
 		
-		ServletRequest servletRequest = (ServletRequest) webRequest.getNativeRequest();
+		HttpServletRequest servletRequest = webRequest.getNativeRequest(HttpServletRequest.class);
 		
 		FormBean formBean = parameter.getParameterAnnotation(FormBean.class);
 		String prefix = formBean.value();//获取@FormBean("user")中的user
