@@ -1,0 +1,31 @@
+# Server Setting
+server:
+  address: 0.0.0.0
+  port: 8080
+
+
+spring:
+#MySql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test_jpa?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+  jpa:
+      database : MYSQL
+      show-sql : true
+      hibernate:
+        ddl-auto : update
+        # possible values: validate | update | create | create-drop
+        naming-strategy : org.hibernate.cfg.ImprovedNamingStrategy
+      properties:
+        hibernate:
+          dialect : org.hibernate.dialect.MySQL5Dialect
+
+#log
+logging:
+  level:
+    org.springframework:
+      web: INFO
+#      security: DEBUG
+#      hibernate: DEBUG
